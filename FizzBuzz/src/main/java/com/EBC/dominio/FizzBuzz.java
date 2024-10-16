@@ -12,6 +12,9 @@ public class FizzBuzz {
 	private int idFB;
 	private List<String> lista;
 	
+	public FizzBuzz() {
+	}
+
 	public FizzBuzz(int idFB, List<String> lista) {
 		super();
 		this.idFB = idFB;
