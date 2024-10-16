@@ -12,6 +12,9 @@ public class Collatz {
 	private int idCollatz;
 	private List<Integer> lista;
 	
+	public Collatz() {
+    }
+	
 	public Collatz(int idCollatz, List<Integer> lista) {
 		this.idCollatz = idCollatz;
 		this.lista = lista;
