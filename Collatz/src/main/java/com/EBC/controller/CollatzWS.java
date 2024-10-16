@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,32 +16,32 @@ import com.EBC.service.CollatzService;
 
 @RestController
 @RequestMapping(path = "/secuence/Collatz")
+@CrossOrigin("*")
 public class CollatzWS {
 
 	@Autowired
 	private CollatzService serviceC;
 	
 	@PutMapping("/{n}")
-	public ResponseEntity<?> collatz(@PathVariable("n") int n) {
+	public ResponseEntity<?> collatz(@PathVariable int n) {
 		
-			List<Integer> lista = new ArrayList<>();
-		
-			while(n!=1) {
-				if(n%2==0) {
-					lista.add(n);
-					n = n / 2;
-				} else {
-					lista.add(n);
-					n = (n*3) + 1;
-				}
+		int aux = n;
+		List<Integer> lista = new ArrayList<>();
+	
+		while(n!=1) {
+			if(n%2==0) {
+				lista.add(n);
+				n = n / 2;
+			} else {
+				lista.add(n);
+				n = (n*3) + 1;
 			}
-			lista.add(n);
-			
-			// No me funciono, me colocaba que no habia constructor pero pues ya estaba hecho
-			// Collatz collatz = new Collatz(n, lista);
-			
-			// se remplaza "lista" con serviceC.guardar(collatz) si prueba por que no funciono
-			return ResponseEntity.ok(lista);
+		}
+		lista.add(n);
+		
+		Collatz collatz = new Collatz(aux, lista);
+		
+		return ResponseEntity.ok(serviceC.guardar(collatz));
 		
 	}
 }
