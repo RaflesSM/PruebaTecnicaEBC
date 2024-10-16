@@ -14,3 +14,4 @@ Se utilizo Postman para las pruebas, pero se puede utilizar el navegador.
     Principal: http://localhost:8021/api/n -> n: es el numero entero que desea usar con el metodo
   FizzBuzz: 
     Principal: htpp://localhost:8021/api/fizzbuzz/n  -> n: es el numero que deseas usar con el metodo
+PD. Quite la metadata para no sea tan pesado
