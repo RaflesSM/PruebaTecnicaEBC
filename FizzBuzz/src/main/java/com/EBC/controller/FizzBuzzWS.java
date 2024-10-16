@@ -25,7 +25,6 @@ public class FizzBuzzWS {
 	
 	@PostMapping("/fizzbuzz/{n}")
 	public ResponseEntity<?> fb(@PathVariable("n") int n) {
-		if(service.buscar(n)==null) {
 			List<String> lista = new ArrayList<>();
 			int c = 1;
 			while(c != n) {
@@ -42,16 +41,16 @@ public class FizzBuzzWS {
 			}
 			lista.add(Integer.toString(c));
 			
-			FizzBuzz fb = new FizzBuzz(n, lista);
+			// No me funciono, me colocaba que no habia constructor pero pues ya estaba hecho
+			// FizzBuzz fb = new FizzBuzz(n, lista);
 			
-			return ResponseEntity.ok(service.guardar(fb));
-		} else {
-			return ResponseEntity.ok(service.buscar(n));
-		}
+			// se remplaza "lista" con service.guardar(fb) si prueba por que no funciono
+			return ResponseEntity.ok(lista);
 	}
 	
-	@PutMapping("/secuence/collatz/{n}")
+	// al no poder desializar la lista que devuelve es mejor usar el url directamente
+	/*@PutMapping("/{n}")
 	public ResponseEntity<?> collatz(@PathVariable("n") int n) {
 		return ResponseEntity.ok(service.collatz(n));
-	}
+	}*/
 }

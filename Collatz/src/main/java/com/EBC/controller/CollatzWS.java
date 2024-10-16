@@ -36,9 +36,11 @@ public class CollatzWS {
 			}
 			lista.add(n);
 			
-			Collatz collatz = new Collatz(n, lista);
+			// No me funciono, me colocaba que no habia constructor pero pues ya estaba hecho
+			// Collatz collatz = new Collatz(n, lista);
 			
-			return ResponseEntity.ok(serviceC.guardar(collatz));
+			// se remplaza "lista" con serviceC.guardar(collatz) si prueba por que no funciono
+			return ResponseEntity.ok(lista);
 		
 	}
 }
