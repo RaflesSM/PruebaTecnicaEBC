@@ -41,16 +41,13 @@ public class FizzBuzzWS {
 			}
 			lista.add(Integer.toString(c));
 			
-			// No me funciono, me colocaba que no habia constructor pero pues ya estaba hecho
-			// FizzBuzz fb = new FizzBuzz(n, lista);
+			FizzBuzz fb = new FizzBuzz(n, lista);
 			
-			// se remplaza "lista" con service.guardar(fb) si prueba por que no funciono
-			return ResponseEntity.ok(lista);
+			return ResponseEntity.ok(service.guardar(fb));
 	}
 	
-	// al no poder desializar la lista que devuelve es mejor usar el url directamente
-	/*@PutMapping("/{n}")
+	@PutMapping("/{n}")
 	public ResponseEntity<?> collatz(@PathVariable("n") int n) {
 		return ResponseEntity.ok(service.collatz(n));
-	}*/
+	}
 }
